@@ -1,33 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Meta Information -->
-    <title>Tweeter - Home Page</title>
 
-    <!-- External CSS -->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+<head>
+  <meta charset="UTF-8">
+  <!-- Meta Information -->
+  <title>Tweeter - Home Page</title>
+  <!-- External CSS -->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <!-- External Font - Roboto Condensed -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,300i,700,700i" rel="stylesheet">
+  <!-- Navbar CSS -->
+  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- New Tweet Form CSS -->
+  <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+  <!-- External JS -->
+  <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+  <!-- App JS -->
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <!-- Tween Character Counter -->
+  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
 
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+<body>
+  <!-- Top nav bar (fixed) -->
+  <nav id="nav-bar">
+    <img class="logo" src="/images/bird.png">
+    <span class="header">Tweeter</span>
+  </nav>
 
-    <!-- External JS -->
-    <script type="text/javascript" src="/vendor/jquery-2.2.3.min.js"></script>
+  <!-- Page-specific (main) content here -->
+  <main class="container">
+    <section class="new-tweet">
+      <h2 class="new-tweet-title">Compose Tweet</h2>
+      <div class="formwrapper">
+        <form id="new-tweet-form" action="/tweets" method="post" enctype="application/x-www-form-urlencoded"
+          character_set="UTF-8">
+          <textarea class="new-tweet-text" id="text" name="text" placeholder="What are you humming about?"></textarea>
+          <input id="submit-tweet" type="submit" value="Tweet">
+          <span class="counter" id="counter">140</span>
+        </form>
+      </div>
+    </section>
 
-    <!-- App JS -->
-    <script type="text/javascript" src="/scripts/app.js"></script>
-  </head>
+    <section class="all-tweets" id="tweets-container">
+      <article>
+        <header>
+          <img src="/images/profile_1.jpg" alt="MrFields profile image"></img>
+          <h1>Bill Fields</h1>
+          <a href="http://localhost:8080/" rel="author">@MrFields</a>
+        </header>
+        <div class="tweet-body">
+          <p>Little tweet here</p>
+        </div>
+        <footer>
+          <time>10 days ago</time>
+          <div class="tweet-action-btns">
+            <a class="tweet-act-btn" href="#"><i class="fas fa-flag"></i></a>
+            <a class="tweet-act-btn" href="#"><i class="fas fa-retweet"></i></a>
+            <a class="tweet-act-btn" href="#"><i class="fas fa-heart"></i></a>
+          </div>
+        </footer>
+      </article>
+    </section>
+  </main>
 
-  <body>
-
-    <!-- Top nav bar (fixed) -->
-    <nav id="nav-bar">
-      <img class="logo" src="/images/bird.png" width="80px" height="80px">
-      <span class="header">Tweeter</span>
-    </nav>
-
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-    </main>
-
-  </body>
+</body>
 </html>

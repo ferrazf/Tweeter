@@ -18,8 +18,126 @@ body {
   margin: 0;
   color: #244751;
   background-color: #eee;
+  font-family: 'Roboto Condensed';
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+body .container {
+  width: 450px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding-bottom: 123px;
+  padding-top: 45px;
+}
+
+main .formwrapper {
+  padding: 0 10px 10px;
+}
+
+#tweets-container article header {
+  height: 80px;
+  box-sizing: content-box;
+  padding: 0 0 9px;
+  width: 95%;
+  margin: 2% auto;
+}
+
+#tweets-container article:hover {
+  background-color: #e8e8e8;
+  border: 1px solid #000;
+}
+
+#tweets-container article:hover h1 {
+  color: #234651;
+}
+
+#tweets-container article:hover img {
+  -webkit-filter: opacity(100%);
+  filter: opacity(100%);
+}
+
+#tweets-container article header h1 {
+  text-indent: 5px;
+  color: #657e85;
+  float: left;
+  margin: 0;
+}
+
+#tweets-container article:hover .tweet-action-btns {
+  display: block;
+}
+
+#tweets-container article header img {
+  float: left;
+  height: 80px;
+  -webkit-filter: opacity(75%);
+  filter: opacity(75%);
+}
+
+#tweets-container article header a {
+  float: right;
+  margin: 15px 0 0;
+  color: #808080;
+  text-decoration: none !important;
+}
+
+#tweets-container article header a:hover {
+  color: #297273;
+}
+
+#tweets-container article, section.new-tweet {
+  padding: 3px;
+  background-color: #f3f3f3;
+  border: 1px solid #d5d5d5;
+  border-radius: 6px;
+  width: 95%;
+  margin: 0 auto 24px;
+}
+
+#tweets-container .tweet-body {
+  display: block;
+  clear: left;
+  padding: 9px;
+  background-color: #fff;
+  border-bottom: 1px solid #f3f3f3;
+}
+
+article .tweet-body p{
+  color: #244751;
+}
+
+#tweets-container article footer {
+  background-color: #fff;
+  padding: 4px;
+  font-size: 0.85em;
+  padding: 9px 6px;
+}
+
+#tweets-container article footer .tweet-action-buttns {
+  height: 28px;
+  float: right;
+}
+
+#tweets-container footer .tweet-action-btns a{
+  display: inline-block;
+}
+
+#tweets-container footer .tweet-action-btns i{
+  display: inline-block;
+  padding: 0 3px;
+  color: #61c6b7;
+}
+
+#tweets-container footer .tweet-action-btns a:hover i{
+  color: #3c999c;
+}
+
+#tweets-container footer .tweet-action-btns{
+  width: 69px;
+  float: right;
+  display: none;
+}
+

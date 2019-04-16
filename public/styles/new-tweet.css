@@ -1,0 +1,34 @@
+/*
+ * New Tweet Form Layout
+ */
+main.new-tweet{
+    margin: 0 2em;
+    border-radius: 3px;
+    border: 1px solid #d9d9d9;
+    background-color: #efefef;
+}
+
+h2.new-tweet-title{
+    border-bottom: 1px solid #000;
+    margin: 9px 9px !important;
+}
+
+textarea.new-tweet-text{
+    padding: 6px 10px;
+    min-height: 150px;
+    width: 100%;
+    margin: 0px;
+    resize: vertical;
+}
+
+span.counter{
+    float: right;
+}
+
+span.invalidLength{
+    color: #FF0000;
+}
+
+article .tweet-body p{
+
+}
