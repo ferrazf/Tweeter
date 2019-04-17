@@ -191,6 +191,12 @@ $(document).ready(function () {
             //renderTweets(tweetAdded);
         });
     });
+
+    // Make AJAX call to fetch requested data
+    $("#compose-btn").click(function () {
+        $(".new-tweet").slideToggle();
+    });
+
 });
 
 // $(document).ready(function () {

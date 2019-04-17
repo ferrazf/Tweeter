@@ -18,3 +18,22 @@
     font-size: 2em;
     padding-left: 10px;
 }
+
+#nav-bar .nav-right{
+    height: 80px;
+    float: right;
+    padding: 20px 0;
+}
+
+#nav-bar .nav-right-btn{
+    padding: 9px;
+    background-color: #004053;
+    border-radius: 4px;
+    font-weight: bold;
+    -webkit-box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 0.69);
+    cursor: pointer;
+}
+
+#nav-bar .nav-right-btn:hover{
+    background-color: #004053;
+}

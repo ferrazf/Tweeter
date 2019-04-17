@@ -87,7 +87,7 @@ main .formwrapper {
   color: #297273;
 }
 
-#tweets-container article, section.new-tweet {
+#tweets-container article {
   padding: 3px;
   background-color: #f3f3f3;
   border: 1px solid #d5d5d5;
