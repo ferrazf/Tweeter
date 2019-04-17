@@ -4,13 +4,18 @@
  * Counts down character limit and enables/disables submit button
  */
 
-$(document).ready(() => {
+$(document).ready(function () {
   let maxTweetLength = 140;
-  $("#text").on("keyup", function() {
+  $("#text").on("keyup", function () {
     $("#counter").html(maxTweetLength - $(this).val().length);
-    if (maxTweetLength - $(this).val().length < 0) {
+    if (!$(this).val()) {
+      //$("#submit-tweet").attr("disabled", true);
+      //alert("Your tweet text cannot be empty!");
+    }
+    else if (maxTweetLength - $(this).val().length < 0) {
       $("#counter").addClass("invalidLength");
-      $("#submit-tweet").attr("disabled", true);
+      //$("#submit-tweet").attr("disabled", true);
+      //alert("Your text cannot exceed 140 characters!");
     } else {
       $("#counter").removeClass("invalidLength");
       $("#submit-tweet").attr("disabled", false);

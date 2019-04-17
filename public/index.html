@@ -37,10 +37,9 @@
     <section class="new-tweet">
       <h2 class="new-tweet-title">Compose Tweet</h2>
       <div class="formwrapper">
-        <form id="new-tweet-form" action="/tweets" method="post" enctype="application/x-www-form-urlencoded"
-          character_set="UTF-8">
+        <form id="new-tweet-form" action="/tweets" method="POST">
           <textarea class="new-tweet-text" id="text" name="text" placeholder="What are you humming about?"></textarea>
-          <input id="submit-tweet" type="submit" value="Tweet">
+          <input id="submit-tweet" disabled="disabled" type="submit" value="Tweet">
           <span class="counter" id="counter">140</span>
         </form>
       </div>
@@ -69,9 +68,4 @@
   </main>
 
 </body>
-<script>
-  text.addEventListener("keyup", (event) => {
-      console.log(event);
-    });
-</script>
 </html>

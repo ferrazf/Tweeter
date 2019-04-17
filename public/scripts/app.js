@@ -85,9 +85,9 @@ function renderTweets(tweets) {
     for (let tweetObj of tweets) {
         let tweetElement = createTweetElement(tweetObj);
         tweetArr.push(tweetElement);
+        tweetArr.reverse();
     }
     $("#tweets-container").append(tweetArr);
-
 }
 
 // Fake data taken from tweets.json
@@ -155,7 +155,59 @@ const data = [
     }
 ];
 
+//Load Tweets
+function loadTweets() {
+    $.ajax('/tweets', { method: 'GET' })
+        .then(function (receivedHtml) {
+            renderTweets(receivedHtml);
+        });
+}
+
 // Render all tweets in the dataset
-$(document).ready( () => {
-    renderTweets(data); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+$(document).ready(function () {
+    var maxTweetLength = 140;
+
+    // Load tweets list
+    loadTweets();
+
+    // Make AJAX call to fetch requested data
+    $("#new-tweet-form").submit(function (e) {
+        event.preventDefault();
+        if (!$(this).context.elements[0].value) {
+            alert("You must enter a text before submitting.");
+            return;
+        }
+        else if ($(this).context.elements[0].value.length > maxTweetLength) {
+            alert("Your text cannot exceed 140 characters!");
+            return;
+        }
+        $.post("/tweets", $(this).serialize()).done(datab => {
+            $("#tweets-container").empty();
+            loadTweets();
+
+            // let rData = data.reverse()[0];
+            // console.log(rData[Object.keys(rData)]);
+            // let tweetAdded = createTweetElement(rData[Object.keys(rData)]);
+            //renderTweets(tweetAdded);
+        });
+    });
 });
+
+// $(document).ready(function () {
+//     $("#new-tweet-form").submit(function (e) {
+//         event.preventDefault();
+//         $.post("/tweets", $(this).serialize());
+//         //loadTweets();
+//     });
+// });
+
+// $(document).ready(() => {
+//     renderTweets(data);
+
+//     // Make AJAX call to fetch requested data
+//     $("#new-tweet-form").submit(e => {
+//         event.preventDefault();
+//         $.post("/tweets", $(this).serialize());
+//         //loadTweets();
+//     });
+// });
