@@ -46,27 +46,13 @@
           <span class="counter" id="counter">140</span>
         </form>
       </div>
+      <div class="new-tweet-error">
+       <span class="new-tweet-error-msg"></span>
+       <span class="new-tweet-error-close" onclick="$('.new-tweet-error').slideToggle(200);">&times;</span>
+      </div>
     </section>
 
-    <section class="all-tweets" id="tweets-container">
-      <article>
-        <header>
-          <img src="/images/profile_1.jpg" alt="MrFields profile image"></img>
-          <h1>Bill Fields</h1>
-          <a href="#" rel="author">@MrFields</a>
-        </header>
-        <div class="tweet-body">
-          <p>Little tweet here</p>
-        </div>
-        <footer>
-          <time>10 days ago</time>
-          <div class="tweet-action-btns">
-            <a class="tweet-act-btn" href="#"><i class="fas fa-flag"></i></a>
-            <a class="tweet-act-btn" href="#"><i class="fas fa-retweet"></i></a>
-            <a class="tweet-act-btn" href="#"><i class="fas fa-heart"></i></a>
-          </div>
-        </footer>
-      </article>
+    <section class="all-tweets" id="tweets-container"></section>
     </section>
   </main>
 

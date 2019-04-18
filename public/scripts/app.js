@@ -1,15 +1,7 @@
 /*
  * Client-side JS logic goes here
  * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-//Used to get the difference in days between now and the tweet post date
-function getTweetDaysAgo(tweetTime) {
-    var timeDiff = Date.now() - tweetTime;
-    var daysDiff = Math.floor(timeDiff / 1000 / 60 / 60 / 24);
-
-    return daysDiff;
-}
 
 //Create a section of the DOM using JQuery and return the HTML for a new tweet
 function createTweetElement(tweetObj) {
@@ -28,7 +20,7 @@ function createTweetElement(tweetObj) {
     let $reportIcon = $("<i>").addClass("fas fa-flag");
     let $retweetIcon = $("<i>").addClass("fas fa-retweet");
     let $favoriteIcon = $("<i>").addClass("fas fa-heart");
-    let timeDaysAgo = getTweetDaysAgo(tweetObj.created_at);
+    let timeDaysAgo = Math.floor((Date.now() - tweetObj.created_at) / 86400000);
 
     //Assign all inner texts
     $tweetBody.text(tweetObj.content.text);
@@ -85,8 +77,8 @@ function renderTweets(tweets) {
     for (let tweetObj of tweets) {
         let tweetElement = createTweetElement(tweetObj);
         tweetArr.push(tweetElement);
-        tweetArr.reverse();
     }
+    tweetArr.reverse();
     $("#tweets-container").append(tweetArr);
 }
 
@@ -157,63 +149,59 @@ const data = [
 
 //Load Tweets
 function loadTweets() {
-    $.ajax('/tweets', { method: 'GET' })
-        .then(function (receivedHtml) {
+    $.ajax('/tweets', { method: 'GET' }).done(
+        function (receivedHtml) {
             renderTweets(receivedHtml);
         });
 }
 
 // Render all tweets in the dataset
 $(document).ready(function () {
-    var maxTweetLength = 140;
+    let $tContainerEl = $("#tweets-container");
+    let $tErrorMsgEl = $(".new-tweet-error-msg");
+    let $tErrorEl = $(".new-tweet-error");
+    let $tFormEl = $("#new-tweet-form");
+    let $tComposeBtn = $("#compose-btn");
+    let $tNewTweetEl = $(".new-tweet");
+    let $tTextBoxEl = $("#text");
+    let maxTweetLength = 140;
 
     // Load tweets list
     loadTweets();
 
     // Make AJAX call to fetch requested data
-    $("#new-tweet-form").submit(function (e) {
+    $tFormEl.submit(function (e) {
         event.preventDefault();
-        if (!$(this).context.elements[0].value) {
-            alert("You must enter a text before submitting.");
-            return;
-        }
-        else if ($(this).context.elements[0].value.length > maxTweetLength) {
-            alert("Your text cannot exceed 140 characters!");
-            return;
-        }
-        $.post("/tweets", $(this).serialize()).done(datab => {
-            $("#tweets-container").empty();
-            loadTweets();
 
-            // let rData = data.reverse()[0];
-            // console.log(rData[Object.keys(rData)]);
-            // let tweetAdded = createTweetElement(rData[Object.keys(rData)]);
-            //renderTweets(tweetAdded);
+        if (!$(this).context.elements[0].value) {
+            $tErrorMsgEl.text(
+                "You must enter a text before submitting."
+            );
+            if ($tErrorEl.css("display") == "none") {
+                $tErrorEl.slideToggle();
+            }
+            return;
+        } else if ($(this).context.elements[0].value.length > maxTweetLength) {
+            $(".new-tweet-error-msg").text(
+                "Your text cannot exceed 140 characters!"
+            );
+            if ($tErrorEl.css("display") == "none") {
+                $tErrorEl.slideToggle();
+            }
+            return;
+        }
+        $.post("/tweets", $(this).serialize()).done(() => {
+            $tErrorEl.hide();
+            $tContainerEl.empty();
+            $tContainerEl.val("");
+            loadTweets();
         });
     });
 
     // Make AJAX call to fetch requested data
-    $("#compose-btn").click(function () {
-        $(".new-tweet").slideToggle();
+    $tComposeBtn.click(function () {
+        $tNewTweetEl.slideToggle(200);
+        $tTextBoxEl.focus();
     });
-
 });
 
-// $(document).ready(function () {
-//     $("#new-tweet-form").submit(function (e) {
-//         event.preventDefault();
-//         $.post("/tweets", $(this).serialize());
-//         //loadTweets();
-//     });
-// });
-
-// $(document).ready(() => {
-//     renderTweets(data);
-
-//     // Make AJAX call to fetch requested data
-//     $("#new-tweet-form").submit(e => {
-//         event.preventDefault();
-//         $.post("/tweets", $(this).serialize());
-//         //loadTweets();
-//     });
-// });

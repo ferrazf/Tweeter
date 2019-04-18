@@ -5,6 +5,9 @@
     background-color: #00a087;
     padding: 0px 2em;
     color: #e8fdff;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
 #nav-bar .logo{
@@ -26,14 +29,17 @@
 }
 
 #nav-bar .nav-right-btn{
-    padding: 9px;
-    background-color: #004053;
+    padding: 9px 12px;
+    background-color: #006a89;
     border-radius: 4px;
     font-weight: bold;
-    -webkit-box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 0.69);
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(65, 65, 65, 0.6);
     cursor: pointer;
+    float: right;
+    margin: 0 15px 0 0;
 }
 
 #nav-bar .nav-right-btn:hover{
     background-color: #004053;
+    -webkit-box-shadow: none;
 }
