@@ -131,3 +131,15 @@ article .tweet-body p{
   float: right;
   display: none;
 }
+
+#submit-tweet{
+  padding: 6px 12px;
+  background-color: #006a89;
+  border-radius: 3px;
+  font-weight: bold;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(65, 65, 65, 0.6);
+  cursor: pointer;
+  border: 0;
+  color: #fff;
+  margin: 5px 0;
+}

@@ -2,7 +2,23 @@
 
 Tweeter is a simple, single-page Twitter clone.
 
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and MongoDB back-end skills.
+This project is a full stack web application built in HTML, CSS, JS, jQuery and AJAX for its front-end architecture, and as Node, Express and MongoDB as their back-end counterparts.
+
+ ## Features:
+
+- Form submission without loading the page, using AJAX methods
+- Character-limit and empty-string error checking
+- Animated DOM element CSS transitions
+- Minimalist, fully responsive bootstrap elements, suitable as a skeleton for any project design
+
+
+## Final Product
+
+!["Tweeter Page"](https://fernandoferraz.com/images/tweeter-page.jpg)
+
+## CSS and JQuery Animations
+
+!["CSS and JQuery Animations"](https://fernandoferraz.com/images/tweeter-animations.gif)\
 
 ## Getting Started
 
@@ -13,5 +29,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Dependencies
 
+- MongdoDB
 - Express
 - Node 5.10.x or above
+- Body-parser
+- Chance
+- Md5
