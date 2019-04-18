@@ -5,7 +5,7 @@
 
 //Create a section of the DOM using JQuery and return the HTML for a new tweet
 function createTweetElement(tweetObj) {
-    let $tweetEl = $('<article>');
+    let $tweetEl = $("<article>");
     let $headerEl = $("<header>");
     let $avatarEl = $("<img>");
     let $headerh1 = $("<h1>");
@@ -69,17 +69,16 @@ function createTweetElement(tweetObj) {
     return $tweetEl;
 }
 
-// Loops through tweets
-// Calls createTweetElement for each tweet
 // Takes return value and appends it to the tweets container
-function renderTweets(tweets) {
+function renderTweets(tweets, bGetSingle) {
     let tweetArr = [];
-    for (let tweetObj of tweets) {
-        let tweetElement = createTweetElement(tweetObj);
-        tweetArr.push(tweetElement);
+    let inputArrNewest = tweets.reverse();
+
+    for (let tweetObj of inputArrNewest) {
+        tweetArr.push(createTweetElement(tweetObj));
+        if (bGetSingle) { break; }
     }
-    tweetArr.reverse();
-    $("#tweets-container").append(tweetArr);
+    $("#tweets-container").prepend(tweetArr);
 }
 
 // Fake data taken from tweets.json
@@ -148,16 +147,14 @@ const data = [
 ];
 
 //Load Tweets
-function loadTweets() {
-    $.ajax('/tweets', { method: 'GET' }).done(
-        function (receivedHtml) {
-            renderTweets(receivedHtml);
-        });
+function loadTweets(bGetSingle = false) {
+    $.ajax("/tweets", { method: "GET" }).done(function (receivedHtml) {
+        renderTweets(receivedHtml, bGetSingle);
+    });
 }
 
-// Render all tweets in the dataset
+// Render all tweets in the dataset on page load
 $(document).ready(function () {
-    let $tContainerEl = $("#tweets-container");
     let $tErrorMsgEl = $(".new-tweet-error-msg");
     let $tErrorEl = $(".new-tweet-error");
     let $tFormEl = $("#new-tweet-form");
@@ -174,17 +171,13 @@ $(document).ready(function () {
         event.preventDefault();
 
         if (!$(this).context.elements[0].value) {
-            $tErrorMsgEl.text(
-                "You must enter a text before submitting."
-            );
+            $tErrorMsgEl.text("You must enter a text before submitting.");
             if ($tErrorEl.css("display") == "none") {
                 $tErrorEl.slideToggle();
             }
             return;
         } else if ($(this).context.elements[0].value.length > maxTweetLength) {
-            $(".new-tweet-error-msg").text(
-                "Your text cannot exceed 140 characters!"
-            );
+            $tErrorMsgEl.text("Your text cannot exceed 140 characters!");
             if ($tErrorEl.css("display") == "none") {
                 $tErrorEl.slideToggle();
             }
@@ -192,10 +185,11 @@ $(document).ready(function () {
         }
         $.post("/tweets", $(this).serialize()).done(() => {
             $tErrorEl.hide();
-            $tContainerEl.empty();
-            $tContainerEl.val("");
-            loadTweets();
-        });
+            $tTextBoxEl.val("");
+            loadTweets(1);
+        }).fail((XHR) => {
+            console.log(XHR)
+        });;
     });
 
     // Make AJAX call to fetch requested data
@@ -204,4 +198,3 @@ $(document).ready(function () {
         $tTextBoxEl.focus();
     });
 });
-
