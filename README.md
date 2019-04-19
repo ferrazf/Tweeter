@@ -18,7 +18,7 @@ This project is a full stack web application built in HTML, CSS, JS, jQuery and 
 
 ## CSS and JQuery Animations
 
-!["CSS and JQuery Animations"](https://fernandoferraz.com/images/tweeter-animations.gif)\
+!["CSS and JQuery Animations"](https://fernandoferraz.com/images/tweeter-animations.gif)
 
 ## Getting Started
 
