@@ -16,10 +16,6 @@ This project is a full stack web application built in HTML, CSS, JS, jQuery and 
 
 !["Tweeter Page"](https://fernandoferraz.com/images/tweeter-page.jpg)
 
-## CSS and JQuery Animations
-
-!["CSS and JQuery Animations"](https://fernandoferraz.com/images/tweeter-animations.gif)
-
 ## Getting Started
 
 1. Fork this repository, then clone your fork of this repository.
