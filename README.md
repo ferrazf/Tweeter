@@ -2,14 +2,14 @@
 
 Tweeter is a simple, single-page Twitter clone.
 
-This project is a full stack web application built in HTML, CSS, JS, jQuery and AJAX for its front-end architecture, and as Node, Express and MongoDB for the back-end.
+This project is a full stack web application built in HTML, CSS, JS, jQuery and AJAX for its front-end architecture, and Node, Express and MongoDB for the back-end.
 
  ## Features:
 
-- Form submission without loading the page, using AJAX methods
+- Form submission without loading the page, using AJAX
 - Character-limit and empty-string error checking
-- Animated DOM element CSS transitions
-- Minimalist, fully responsive bootstrap elements, suitable as a skeleton for any project design
+- Animated DOM elements using CSS and JQuery
+- Minimalist, fully responsive bootstrap elements, suitable as a skeleton for any design adaptation
 
 
 ## Final Product
