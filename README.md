@@ -14,7 +14,7 @@ This project is a full stack web application built in HTML, CSS, JS, jQuery and 
 
 ## Final Product
 
-!["Tweeter Page"](https://fernandoferraz.com/images/tweeter-page.jpg)
+!["Tweeter Page"](https://i.imgur.com/jT70R5W.jpg)
 
 ## Getting Started
 
